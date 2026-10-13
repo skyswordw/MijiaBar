@@ -87,7 +87,7 @@ struct PropRow: View {
                    onEditingChanged: { editing in
                        if !editing, let v = local { m.write(device, prop.key, PropValue.double(v).coerced(to: prop.format)); local = nil }
                    }).frame(width: 130).controlSize(.small)
-            Text("\(PropValue.double(local ?? value?.doubleValue ?? r[0]))\(unit)").font(.system(size: 11)).monospacedDigit().frame(width: 52, alignment: .trailing)
+            Text(PropValue.double(local ?? value?.doubleValue ?? r[0]).description + unit).font(.system(size: 11)).monospacedDigit().frame(width: 52, alignment: .trailing)
         } else {
             Text(display).font(.system(size: 12, weight: .medium)).foregroundStyle(.secondary).lineLimit(1)
         }
